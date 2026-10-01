@@ -1,0 +1,1175 @@
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+  --verde: #0e4740;
+  --verde2: #166055;
+  --beige: #cdbfb1;
+  --arena: #f6f2ec;
+  --crema: #fbf9f6;
+  --texto: #1d2a28;
+  --gris: #5c6b68;
+  --linea: #e3dcd2;
+
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --head: "Poppins", var(--sans);
+  --script: "Dancing Script", cursive;
+}
+
+/* =========================================================
+   RESET / BASE
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* =========================================================
+   TIPOGRAFÍA
+========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 0.5em;
+
+  font-family: var(--head);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--verde);
+}
+
+h2 {
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+
+  font-family: var(--head);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--verde2);
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.wrap {
+  width: min(1180px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+section {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  padding: 0.95rem 1.7rem;
+
+  border: 2px solid var(--verde);
+  border-radius: 999px;
+
+  background: var(--verde);
+  color: #fff;
+
+  font-family: var(--head);
+  font-size: 1rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.btn:hover {
+  background: var(--verde2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(14, 71, 64, 0.22);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--verde);
+  border-color: var(--beige);
+}
+
+.btn--ghost:hover {
+  background: var(--arena);
+  color: var(--verde);
+}
+
+.btn--onimg {
+  background: #fff;
+  color: var(--verde);
+  border-color: #fff;
+}
+
+.btn--onimg:hover {
+  background: var(--arena);
+  color: var(--verde);
+}
+
+.btn--lg {
+  padding: 1.15rem 2.4rem;
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
+header.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+
+  background: rgba(255, 255, 255);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid var(--linea);
+}
+
+.nav__in {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  min-height: 72px;
+  padding-block: 0.6rem;
+}
+
+.nav__logo img {
+  width: auto;
+  height: 44px;
+}
+
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: 1.75rem;
+
+  margin-left: auto;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.nav__links a {
+  padding-block: 0.25rem;
+
+  border-bottom: 2px solid transparent;
+
+  color: var(--gris);
+  text-decoration: none;
+}
+
+.nav__links a:hover {
+  color: var(--verde);
+  border-color: var(--beige);
+}
+
+.nav__cta {
+  margin-left: auto;
+}
+
+.nav__toggle {
+  margin-left: auto;
+  padding: 0.25rem 0.5rem;
+
+  border: 0;
+  background: none;
+
+  color: var(--verde);
+
+  font-size: 1.6rem;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+#menu {
+  display: none;
+
+  border-top: 1px solid var(--linea);
+
+  background: #fff;
+}
+
+#menu.open {
+  display: block;
+}
+
+#menu a {
+  display: block;
+
+  padding: 1rem 0;
+
+  border-bottom: 1px solid var(--linea);
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: min(86vh, 720px);
+
+  display: flex;
+  align-items: flex-end;
+
+  overflow: hidden;
+
+  color: #fff;
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(14, 71, 64, 0.55) 0%,
+    rgba(14, 71, 64, 0.35) 35%,
+    rgba(10, 40, 36, 0.88) 100%
+  );
+}
+
+.hero__in {
+  position: relative;
+  z-index: 2;
+
+  max-width: 760px;
+  padding: 6rem 0 3.5rem;
+}
+
+.hero .script {
+  display: block;
+
+  margin-bottom: 0.15em;
+
+  color: #fff;
+
+  font-family: var(--script);
+  font-size: clamp(3.2rem, 11vw, 5.2rem);
+  line-height: 0.9;
+}
+
+.hero h1 {
+  max-width: 15ch;
+
+  color: #fff;
+
+  font-size: clamp(1.6rem, 4.6vw, 2.7rem);
+  font-weight: 600;
+}
+
+.hero p {
+  max-width: 52ch;
+
+  color: #ebf1ee;
+
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+
+  margin-top: 1.8rem;
+}
+
+.hero__meta {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   FONDOS
+========================================================= */
+
+.bg-arena {
+  background: var(--arena);
+}
+
+.bg-crema {
+  background: var(--crema);
+}
+
+.bg-verde {
+  background: var(--verde);
+  color: #edf3f1;
+}
+
+.bg-verde h2,
+.bg-verde h3 {
+  color: #fff;
+}
+
+/* =========================================================
+   LAYOUTS DE CONTENIDO
+========================================================= */
+
+.split {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.split > * {
+  min-width: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+.ph {
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  box-shadow: 0 18px 44px rgba(14, 71, 64, 0.14);
+}
+
+.ph img,
+.ph video {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+.ph video {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+figcaption {
+  margin-top: 0.6rem;
+
+  color: var(--gris);
+
+  font-size: 0.82rem;
+}
+
+/* =========================================================
+   ESTADÍSTICAS
+========================================================= */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+
+  margin-top: 2rem;
+
+  overflow: hidden;
+
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+
+  background: var(--linea);
+}
+
+.stat {
+  padding: 1.4rem 1rem;
+
+  background: #fff;
+
+  text-align: center;
+}
+
+.stat b {
+  display: block;
+
+  color: var(--verde);
+
+  font-family: var(--head);
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.stat span {
+  color: var(--gris);
+
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   PROGRESO — COMPONENTE GENERAL
+========================================================= */
+
+.progress {
+  max-width: 640px;
+}
+
+.progress__bar {
+  height: 14px;
+
+  margin: 0.8rem 0 0.5rem;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.progress__fill {
+  width: 50%;
+  height: 100%;
+
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, var(--beige), #fff);
+
+  transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.progress__labels {
+  display: flex;
+  justify-content: space-between;
+
+  color: #c7d6d2;
+
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   CAMPAÑA ACTUAL
+   "YO SUMO · EL METRO DEL PISO"
+========================================================= */
+
+.metro-campana {
+  background: var(--verde);
+  color: #fff;
+}
+
+.metro-campana h2,
+.metro-campana h3 {
+  color: #fff;
+}
+
+/* Introducción */
+
+.metro-campana__intro {
+  max-width: 760px;
+  margin-bottom: 2.5rem;
+}
+
+.metro-campana__intro .eyebrow {
+  color: var(--beige);
+}
+
+.metro-campana__intro h2 {
+  max-width: 720px;
+  margin-bottom: 1.2rem;
+
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1.05;
+}
+
+.metro-campana__intro p {
+  max-width: 700px;
+
+  margin-bottom: 1rem;
+
+  color: #dce8e5;
+}
+
+/* Avance de obra */
+
+.metro-campana__progress {
+  max-width: 900px;
+
+  margin: 0 auto 4rem;
+  padding: 1.5rem 2rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.metro-campana__progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 0.8rem;
+}
+
+.metro-campana__progress-head span {
+  color: #cbd9d6;
+
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.metro-campana__progress-head strong {
+  color: #fff;
+
+  font-family: var(--head);
+  font-size: 3rem;
+  line-height: 1;
+}
+
+/*
+  Barra hardcodeada al 50%.
+  Cuando quieras volver a animarla con JS,
+  podemos recuperar la lógica de .in.
+*/
+
+.metro-campana .progress__bar {
+  width: 100%;
+  height: 12px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.metro-campana .progress__fill {
+  width: 50%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #fff;
+}
+
+.metro-campana .progress__labels {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 0.55rem;
+
+  color: #cbd9d6;
+
+  font-size: 0.75rem;
+}
+
+/* Valores de los metros */
+
+.metro-campana__donaciones {
+  margin-top: 1rem;
+}
+
+.metro-campana__heading {
+  max-width: 650px;
+  margin-bottom: 1.5rem;
+}
+
+.metro-campana__heading .eyebrow {
+  color: var(--beige);
+}
+
+.metro-campana__heading h3 {
+  margin: 0;
+
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  line-height: 1.1;
+}
+
+/* Cards de metros */
+
+.metro-campana .metros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.metro-campana .metro {
+  min-width: 0;
+
+  padding: 1.4rem 1rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+
+  background: #fff;
+  color: var(--verde);
+
+  text-align: center;
+}
+
+.metro-campana .metro strong {
+  display: block;
+
+  font-family: var(--head);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.metro-campana .metro span {
+  display: block;
+
+  margin-top: 0.3rem;
+
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.metro-campana .metro b {
+  display: inline-block;
+
+  margin-top: 0.9rem;
+  padding: 0.5rem 0.8rem;
+
+  border-radius: 999px;
+
+  background: var(--verde);
+  color: #fff;
+
+  font-size: 0.9rem;
+}
+
+/* CTA de campaña */
+
+.metro-campana__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.metro-campana__cta p {
+  margin: 0;
+
+  color: #dce8e5;
+}
+
+/* =========================================================
+   CARDS GENERALES
+========================================================= */
+
+.grid2 {
+  display: grid;
+  gap: 1.8rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid var(--linea);
+  border-radius: 16px;
+
+  background: #fff;
+}
+
+.card__body {
+  padding: 1.6rem 1.5rem 1.8rem;
+}
+
+.card ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.card li {
+  display: flex;
+  gap: 0.7rem;
+
+  padding: 0.55rem 0;
+
+  border-bottom: 1px dashed var(--linea);
+
+  font-size: 0.97rem;
+}
+
+.card li:last-child {
+  border: 0;
+}
+
+.card li::before {
+  content: "";
+
+  flex: 0 0 8px;
+
+  width: 8px;
+  height: 8px;
+
+  margin-top: 0.55rem;
+
+  border-radius: 2px;
+
+  background: var(--beige);
+}
+
+/* =========================================================
+   ELEMENTOS DESTACADOS
+========================================================= */
+
+.kicker {
+  color: var(--beige);
+
+  font-family: var(--head);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* =========================================================
+   METROS — COMPONENTE GENERAL
+========================================================= */
+
+.metros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+
+  margin-top: 2rem;
+}
+
+.metro {
+  padding: 1.2rem 0.8rem;
+
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+
+  background: #fff;
+
+  text-align: center;
+}
+
+.metro b {
+  display: block;
+
+  color: var(--verde);
+
+  font-family: var(--head);
+  font-size: 1.25rem;
+}
+
+.metro span {
+  display: block;
+
+  margin-bottom: 0.8rem;
+
+  color: var(--gris);
+
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.metro em {
+  display: inline-block;
+
+  padding: 0.35rem 1rem;
+
+  border-radius: 999px;
+
+  background: var(--verde);
+  color: #fff;
+
+  font-family: var(--head);
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.nota {
+  margin-top: 1.2rem;
+
+  color: var(--gris);
+
+  font-size: 0.82rem;
+}
+
+/* =========================================================
+   COLABORAR / DONACIONES
+========================================================= */
+
+.donar {
+  padding: clamp(1.8rem, 4vw, 2.6rem);
+
+  border: 1px solid var(--linea);
+  border-top: 4px solid var(--verde);
+  border-radius: 16px;
+
+  background: #fff;
+}
+
+.alt {
+  display: grid;
+  gap: 1.2rem;
+
+  margin-top: 1.5rem;
+}
+
+.alt__box {
+  padding: 1.4rem 1.5rem;
+
+  border-radius: 14px;
+
+  background: var(--arena);
+}
+
+.alt__box h3 {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.alt__box ul {
+  margin: 0;
+  padding-left: 1.1rem;
+
+  color: var(--gris);
+
+  font-size: 0.93rem;
+}
+
+.dato {
+  color: var(--verde);
+
+  font-family: var(--head);
+  font-weight: 600;
+
+  word-break: break-all;
+}
+
+/* =========================================================
+   YO SUMO
+========================================================= */
+
+.yosumo .script {
+  display: block;
+
+  color: #fff;
+
+  font-family: var(--script);
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  line-height: 0.9;
+}
+
+.yosumo .rule {
+  width: 120px;
+  height: 3px;
+
+  margin: 1.2rem 0 2rem;
+
+  border-radius: 2px;
+
+  background: var(--beige);
+}
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.cta {
+  position: relative;
+
+  overflow: hidden;
+
+  color: #fff;
+
+  text-align: center;
+}
+
+.cta img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.cta::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(10, 40, 36, 0.82);
+}
+
+.cta__in {
+  position: relative;
+  z-index: 2;
+
+  padding: clamp(4rem, 10vw, 7rem) 0;
+}
+
+.cta h2 {
+  max-width: 18ch;
+
+  margin-inline: auto;
+
+  color: #fff;
+
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+  padding: 3.5rem 0 7rem;
+
+  background: #0a2e29;
+  color: #b9ccc7;
+
+  font-size: 0.92rem;
+}
+
+footer h3 {
+  margin-bottom: 0.6rem;
+
+  color: #fff;
+
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: #dce8e4;
+}
+
+.foot {
+  display: grid;
+  gap: 2rem;
+}
+
+.legal {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: #8aa5a0;
+
+  font-size: 0.8rem;
+}
+
+/* =========================================================
+   STICKY MOBILE
+========================================================= */
+
+.sticky {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 60;
+
+  padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
+
+  border-top: 1px solid var(--linea);
+
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+}
+
+.sticky .btn {
+  width: 100%;
+}
+
+/* =========================================================
+   REVEAL / ANIMACIONES
+========================================================= */
+
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rv.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (min-width: 700px) {
+  .metro-campana .metros {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 760px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 820px) {
+  .metros {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .alt {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .foot {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — DESKTOP
+========================================================= */
+
+@media (min-width: 900px) {
+  .nav__links {
+    display: flex;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__cta {
+    margin-left: 0;
+  }
+
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+
+  .split--rev > figure {
+    order: 2;
+  }
+
+  .grid2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2rem;
+  }
+
+  .sticky {
+    display: none;
+  }
+
+  footer {
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE CAMPAÑA
+========================================================= */
+
+@media (max-width: 699px) {
+  .metro-campana__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rv {
+    opacity: 1;
+    transform: none;
+
+    transition: none;
+  }
+
+  .progress__fill {
+    transition: none;
+  }
+}
