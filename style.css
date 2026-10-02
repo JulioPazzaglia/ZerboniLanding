@@ -512,6 +512,7 @@ figcaption {
 ========================================================= */
 
 .metro-campana {
+  padding-top: 10%;
   background: var(--verde);
   color: #fff;
 }
