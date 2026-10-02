@@ -512,7 +512,6 @@ figcaption {
 ========================================================= */
 
 .metro-campana {
-  padding-top: 10%;
   background: var(--verde);
   color: #fff;
 }
@@ -553,8 +552,7 @@ figcaption {
 
 .metro-campana__progress {
   max-width: 900px;
-
-  margin: 0 auto 4rem;
+  margin: 4rem;
   padding: 1.5rem 2rem;
 
   border: 1px solid rgba(255, 255, 255, 0.18);
